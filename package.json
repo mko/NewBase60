@@ -1,0 +1,13 @@
+{
+  "name": "NewBase60",
+  "description": "NewBase60 conversion utility",
+  "version": "1.0.0",
+  "repository": "https://github.com/mko/NewBase60",
+  "bugs": "https://github.com/mko/NewBase60/issues",
+  "keywords": [
+    "NewBase60",
+    "base60",
+    "utility",
+    "conversion"
+  ]
+}
