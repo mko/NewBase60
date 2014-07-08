@@ -16,7 +16,7 @@
  */
 
 // Converts a Base 10 Integer into Sexagesimal (Base 60) String
-function toSXG(num) {
+function IntToSxg(num) {
   var sxg = "";
   var sequence = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ_abcdefghijkmnopqrstuvwxyz";
   if (num===undefined || num===0) { return 0; }
@@ -29,8 +29,8 @@ function toSXG(num) {
 }
 
 // Converts a Base 10 Integer into Sexagesimal (Base 60) String with a Formatted Length
-function toSXGF(num, formatLength) {
-  var sxg = getBase60(n);
+function IntToSxgF(num, formatLength) {
+  var sxg = IntToSxg(n);
   if (formatLength===undefined) {
     formatLength=1;
   }
@@ -43,7 +43,7 @@ function toSXGF(num, formatLength) {
 }
 
 // Converts a Sexageismal (Base 60) String into a Base 10 Integer
-function toInt(sxg) {
+function SxgToInt(sxg) {
   var num = 0;
   var j = sxg.length;
   for (var i=0; i<j; i++) { // iterate from first to last char of s
@@ -65,8 +65,8 @@ function toInt(sxg) {
 }
 
 // Converts a Sexageismal (Base 60) String into a JS Date Object
-function toDate(sxg) {
-  var num = toInt(sxg);
+function SxgToDate(sxg) {
+  var num = SxgToInt(sxg);
   var dateObj = new Date().setUTCFullYear(1970,0,1);
   var epochDays = num * 60 * 60 * 24;
   dateObj.setUTCDate(epochDays);
@@ -74,15 +74,16 @@ function toDate(sxg) {
 }
 
 // Converts a Sexageismal (Base 60) String into a ISO-8601 Datetime String (always UTC)
-function toISO(sxg) {
-  var dateObj = toDate(sxg);
+function SxgToISO(sxg) {
+  var dateObj = SxgToDate(sxg);
   return dateObj.toISOString();
 }
 
-module.exports.toSXG = toSXG;
-module.exports.toSXGF = toSXGF;
-module.exports.toInt = toInt;
-module.exports.toDate = toDate;
+module.exports.IntToSxg = IntToSxg;
+module.exports.IntToSxgF = IntToSxgF;
+module.exports.SxgToInt = SxgToInt;
+module.exports.SxgToDate = SxgToDate;
+module.exports.SxgToISO = SxgToISO;
 
 // When run directly as a Node.js program, spit out a random 32-bit number in NewBase60
 if ((typeof(__filename) == 'string')
@@ -91,7 +92,7 @@ if ((typeof(__filename) == 'string')
 
     var rand = Math.pow(2,32);
     var num = Math.floor(Math.random() * rand);
-    var sxg = toSXG(num);
+    var sxg = IntToSXG(num);
 
     // Output SXG to console
     console.log(sxg);
