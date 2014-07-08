@@ -1,7 +1,7 @@
 {
   "name": "newbase60",
   "description": "NewBase60 conversion utility",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/mko/NewBase60",
   "bugs": "https://github.com/mko/NewBase60/issues",
   "keywords": [
