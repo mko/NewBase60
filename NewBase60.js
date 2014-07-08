@@ -15,6 +15,23 @@
  *           http://creativecommons.org/licenses/by-sa/3.0/
  */
 
+
+// Converts a JS Date Object to a Sexageismal (Base 60) String
+function DateToSxg(dateObj) {
+  var sinceEpoch = Date.UTC(dateObj.getUTCYear(), dateObj.getUTCMonth(), dateObj.getUTCDate(), dateObj.getUTCHours(), dateObj.getUTCMinutes(), dateObj.getUTCSeconds(), dateObj.getUTCMilliseconds());
+  var epochDays = sinceEpoch / 86400000;
+
+  return DateToSxg(epochDays);
+}
+
+// Converts a JS Date Object to a Sexageismal (Base 60) String with formatting
+function DateToSxgF(dateObj, formatLength) {
+  var sinceEpoch = Date.UTC(dateObj.getUTCYear(), dateObj.getUTCMonth(), dateObj.getUTCDate(), dateObj.getUTCHours(), dateObj.getUTCMinutes(), dateObj.getUTCSeconds(), dateObj.getUTCMilliseconds());
+  var epochDays = sinceEpoch / 86400000;
+
+  return DateToSxgF(epochDays, formatLength);
+}
+
 // Converts a Base 10 Integer into Sexagesimal (Base 60) String
 function IntToSxg(num) {
   var sxg = "";
@@ -79,6 +96,8 @@ function SxgToISO(sxg) {
   return dateObj.toISOString();
 }
 
+module.exports.DateToSxg = DateToSxg;
+module.exports.DateToSxgF = DateToSxgF;
 module.exports.IntToSxg = IntToSxg;
 module.exports.IntToSxgF = IntToSxgF;
 module.exports.SxgToInt = SxgToInt;
